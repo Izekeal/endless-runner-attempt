@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://hihnycbdqnb5"]
+
+[ext_resource type="Texture2D" uid="uid://c7wdbyo5x3lyv" path="res://textures/penquin.png" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://dgb1sqbqbcm64" path="res://player.gd" id="1_onrkg"]
+
+[sub_resource type="Gradient" id="Gradient_onrkg"]
+offsets = PackedFloat32Array(0.450704, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i3pqv"]
+gradient = SubResource("Gradient_onrkg")
+
+[sub_resource type="Curve" id="Curve_hqtel"]
+_data = [Vector2(0, 0.752809), 0.0, 0.0, 0, 0, Vector2(1, 0.202247), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_sweqy"]
+curve = SubResource("Curve_hqtel")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2hs0m"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 64.0
+initial_velocity_max = 128.0
+gravity = Vector3(0, 98, 0)
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_sweqy")
+color_ramp = SubResource("GradientTexture1D_i3pqv")
+
+[node name="Player" type="CharacterBody2D"]
+floor_constant_speed = true
+floor_snap_length = 8.0
+script = ExtResource("1_onrkg")
+
+[node name="Anchor" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Anchor"]
+position = Vector2(0, -4)
+texture = ExtResource("1_4flbx")
+offset = Vector2(0, -8)
+hframes = 2
+frame = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(64, -16)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-8, 0, -8, -6, -3, -9, 8, -9, 8, -7)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 300)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+process_mode = 3
+position = Vector2(-2, 0)
+emitting = false
+amount = 180
+process_material = SubResource("ParticleProcessMaterial_2hs0m")

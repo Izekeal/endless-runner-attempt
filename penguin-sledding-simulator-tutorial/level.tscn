@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://rievl6aqwknr"]
+
+[ext_resource type="Script" uid="uid://4qydll2aer3k" path="res://level.gd" id="1_0b4ue"]
+[ext_resource type="PackedScene" uid="uid://hihnycbdqnb5" path="res://player.tscn" id="1_u52ul"]
+[ext_resource type="Script" uid="uid://fd2vy2y5l41q" path="res://visible_collision_polygon_2d.gd" id="1_vonw3"]
+[ext_resource type="PackedScene" uid="uid://crtetimx8n6xv" path="res://finish_line.tscn" id="3_oi3di"]
+[ext_resource type="FontFile" uid="uid://bu84rh60p2qpx" path="res://fonts/nes_cyrillic.ttf" id="5_f2txt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ainy"]
+font = ExtResource("5_f2txt")
+font_color = Color(0, 0, 0, 1)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_0b4ue")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(0, 128, 64, 128, 96, 112, 128, 112, 128, 128, 232, 128, 232, 112, 352, 112, 392, 128, 512, 128, 568, 112, 840, 112, 840, 96, 912, 96, 912, 184, 0, 184)
+script = ExtResource("1_vonw3")
+
+[node name="VisibleCollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(0, 96)
+polygon = PackedVector2Array(1160, 96, 1192, 112, 1376, 112, 1376, 208, 960, 208, 960, 96)
+script = ExtResource("1_vonw3")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="Player" parent="." instance=ExtResource("1_u52ul")]
+position = Vector2(16, 128)
+
+[node name="FinishLine" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_oi3di")]
+offset_left = 1376.0
+offset_top = -56.0
+offset_right = 1432.0
+offset_bottom = 448.0
+player = NodePath("../Player")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "0.6"
+label_settings = SubResource("LabelSettings_1ainy")
