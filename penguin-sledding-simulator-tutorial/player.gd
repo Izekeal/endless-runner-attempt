@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 @export var acceleration: = 150
 @export var max_speed: = 290
+@export var velocity_backup = 0
 @export var friction: = 200
 @export var air_friction: = 60
 @export var up_gravity: = 250
@@ -26,6 +27,7 @@ var finish_x: = -1.0
 @onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
 
 signal level_finished()
+signal update_velocity()
 
 func _ready() -> void:
 	camera_2d.zoom = Vector2(max_zoom_amount, max_zoom_amount)
@@ -35,6 +37,7 @@ func _physics_process(delta: float) -> void:
 	coyote_time += delta
 	
 	check_for_finish_line()
+	signal_velocity()
 	
 	if is_on_floor() or coyote_time <= coyote_time_amount:
 		gpu_particles_2d.emitting = true
@@ -73,7 +76,12 @@ func _physics_process(delta: float) -> void:
 	var previous_velocity = velocity
 	var was_on_floor = is_on_floor()
 	
+	# Temporarily change velocity.x to zero but then restore the value
+	# after move_and_slide()
+	velocity_backup = velocity.x
+	velocity.x = 0
 	move_and_slide()
+	velocity.x = velocity_backup
 	
 	var just_left_ledge = was_on_floor and not is_on_floor() and velocity.y >= 0
 	
@@ -101,3 +109,6 @@ func check_for_finish_line() -> void:
 	if global_position.x > finish_x and finish_x != -1:
 		level_finished.emit()
 		gpu_particles_2d.set_deferred("emitting", false)
+
+func signal_velocity() ->  void:
+	update_velocity.emit()
