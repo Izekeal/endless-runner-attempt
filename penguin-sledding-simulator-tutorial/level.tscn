@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://rievl6aqwknr"]
+[gd_scene load_steps=5 format=3 uid="uid://rievl6aqwknr"]
 
 [ext_resource type="Script" uid="uid://4qydll2aer3k" path="res://level.gd" id="1_0b4ue"]
 [ext_resource type="PackedScene" uid="uid://hihnycbdqnb5" path="res://player.tscn" id="1_u52ul"]
-[ext_resource type="Script" uid="uid://fd2vy2y5l41q" path="res://visible_collision_polygon_2d.gd" id="1_vonw3"]
 [ext_resource type="FontFile" uid="uid://bu84rh60p2qpx" path="res://fonts/nes_cyrillic.ttf" id="5_f2txt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1ainy"]
@@ -31,32 +30,3 @@ text = "0.6"
 label_settings = SubResource("LabelSettings_1ainy")
 
 [node name="Areas" type="Node2D" parent="."]
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="Areas"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Areas/StaticBody2D2"]
-polygon = PackedVector2Array(0, 128, 64, 128, 96, 112, 128, 112, 128, 128, 232, 128, 232, 112, 352, 112, 392, 128, 512, 128, 568, 112, 840, 112, 840, 96, 912, 96, 912, 184, 0, 184)
-script = ExtResource("1_vonw3")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Areas"]
-
-[node name="VisibleCollisionPolygon2D" type="CollisionPolygon2D" parent="Areas/StaticBody2D"]
-position = Vector2(0, 96)
-polygon = PackedVector2Array(1160, 96, 1192, 112, 1376, 112, 1376, 208, 960, 208, 960, 96)
-script = ExtResource("1_vonw3")
-metadata/_custom_type_script = "uid://fd2vy2y5l41q"
-
-[node name="VisibleCollisionPolygon2D2" type="CollisionPolygon2D" parent="Areas/StaticBody2D"]
-position = Vector2(32, -56)
-scale = Vector2(0.982143, 0.982143)
-polygon = PackedVector2Array(1376, 112, 1376, 208, 1196.64, 208, 1151.71, 184.582, 953.018, 187.345, 953.018, 97.7455)
-script = ExtResource("1_vonw3")
-metadata/_custom_type_script = "uid://fd2vy2y5l41q"
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="Areas"]
-
-[node name="VisibleCollisionPolygon2D2" type="CollisionPolygon2D" parent="Areas/StaticBody2D3"]
-position = Vector2(-656, 280)
-polygon = PackedVector2Array(1080, 160, 1296, 128, 1360, 176, 1744, 136, 1768, 224, 968, 224, 960, 96)
-script = ExtResource("1_vonw3")
-metadata/_custom_type_script = "uid://fd2vy2y5l41q"

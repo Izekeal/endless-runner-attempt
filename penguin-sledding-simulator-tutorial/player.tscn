@@ -52,7 +52,17 @@ visible = false
 polygon = PackedVector2Array(-8, 0, -8, -6, -3, -9, 8, -9, 8, -7)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+visible = false
 target_position = Vector2(0, 300)
+
+[node name="RayCastForward" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(2, -8)
+target_position = Vector2(7, 0)
+
+[node name="RayCastBackward" type="RayCast2D" parent="."]
+position = Vector2(-3, -5)
+target_position = Vector2(-6, 0)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 process_mode = 3

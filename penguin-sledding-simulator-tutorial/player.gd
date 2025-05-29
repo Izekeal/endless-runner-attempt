@@ -15,6 +15,7 @@ class_name Player extends CharacterBody2D
 @export var min_zoom_amount: = 0.8
 @export var max_zoom_amount: = 1.5
 
+
 var target_tilt: = 0.0
 var air_jump: = true
 var coyote_time: = 0.0
@@ -25,6 +26,9 @@ var finish_x: = -1.0
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
+@onready var collision_polygon_2d: CollisionPolygon2D = $CollisionPolygon2D
+@onready var ray_cast_forward: RayCast2D = $RayCastForward
+@onready var ray_cast_backward: RayCast2D = $RayCastBackward
 
 signal level_finished()
 signal update_velocity()
@@ -38,6 +42,7 @@ func _physics_process(delta: float) -> void:
 	
 	check_for_finish_line()
 	signal_velocity()
+	check_for_collision()
 	
 	if is_on_floor() or coyote_time <= coyote_time_amount:
 		gpu_particles_2d.emitting = true
@@ -77,7 +82,8 @@ func _physics_process(delta: float) -> void:
 	var was_on_floor = is_on_floor()
 	
 	# Temporarily change velocity.x to zero but then restore the value
-	# after move_and_slide()
+	# after move_and_slide().
+	# TO-DO: Clean this up
 	velocity_backup = velocity.x
 	velocity.x = 0
 	move_and_slide()
@@ -112,3 +118,19 @@ func check_for_finish_line() -> void:
 
 func signal_velocity() ->  void:
 	update_velocity.emit()
+
+# This checks for a forward collision.
+# TO-DO: Determine a method to allow for the player to *bonk* on ceilings
+# without triggering a level_finished
+func check_for_collision():
+	if ray_cast_forward.is_colliding():
+		var collision = ray_cast_forward.get_collision_point()
+		if global_position.x > (collision.x - 20):
+			level_finished.emit()
+			gpu_particles_2d.set_deferred("emitting", false)
+	
+	if ray_cast_backward.is_colliding():
+		var collision = ray_cast_backward.get_collision_point()
+		if global_position.x > (collision.x - 20):
+			level_finished.emit()
+			gpu_particles_2d.set_deferred("emitting", false)
