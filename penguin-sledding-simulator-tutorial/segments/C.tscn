@@ -6,6 +6,6 @@
 
 [node name="VisibleCollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
 position = Vector2(-960, 0)
-polygon = PackedVector2Array(1080, 160, 1296, 128, 1360, 176, 1744, 136, 1768, 224, 968, 224, 960, 96)
+polygon = PackedVector2Array(1080, 160, 1296, 128, 1360, 176, 1696.71, 140.926, 1698.72, 224, 968, 224, 960, 96)
 script = ExtResource("1_8og22")
 metadata/_custom_type_script = "uid://fd2vy2y5l41q"

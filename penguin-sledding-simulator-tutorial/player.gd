@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody2D
 
 @export var acceleration: = 150
-@export var max_speed: = 290
+@export var max_speed: = 350
 @export var velocity_backup = 0
 @export var friction: = 200
 @export var air_friction: = 60

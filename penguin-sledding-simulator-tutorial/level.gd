@@ -7,7 +7,9 @@ extends Node2D
 var segments = [
 	preload("res://segments/A.tscn"),
 	preload("res://segments/B.tscn"),
-	preload("res://segments/C.tscn")
+	preload("res://segments/C.tscn"),
+	preload("res://segments/D.tscn"),
+	preload("res://segments/E.tscn")
 ]
 var time: = 0.0
 var is_timer_running = true
@@ -17,7 +19,7 @@ func _ready() -> void:
 	player.update_velocity.connect(update_velocity)
 	randomize()
 	spawn_instance(0, 0)
-	spawn_instance(780,0)
+	spawn_instance(720,0)
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

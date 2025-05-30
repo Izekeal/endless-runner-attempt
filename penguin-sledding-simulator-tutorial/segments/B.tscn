@@ -23,3 +23,13 @@ scale = Vector2(0.669002, 0.320201)
 polygon = PackedVector2Array(1376, 112, 1376, 208, 1196.64, 208, 1151.71, 184.582, 953.018, 187.345, 953.018, 97.7455)
 script = ExtResource("1_o6xjn")
 metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D4" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(552, 88, 552, 136, 568, 136, 568, 88)
+script = ExtResource("1_o6xjn")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D5" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(616, 40, 688, 96, 672, 120, 600, 64)
+script = ExtResource("1_o6xjn")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"

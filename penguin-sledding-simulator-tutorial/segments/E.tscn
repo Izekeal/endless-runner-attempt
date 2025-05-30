@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw18tqshmyur8"]
+
+[ext_resource type="Script" uid="uid://fd2vy2y5l41q" path="res://visible_collision_polygon_2d.gd" id="1_w1xii"]
+
+[node name="StaticBody2D2" type="StaticBody2D"]
+
+[node name="VisibleCollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 88, 88, 136, 144, 152, 192, 176, 344, 160, 432, 128, 432, 192, 0, 192)
+script = ExtResource("1_w1xii")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D3" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(472, 160, 544, 160, 544, 176, 472, 176)
+script = ExtResource("1_w1xii")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D4" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(560, 96, 640, 96, 640, 112, 560, 112)
+script = ExtResource("1_w1xii")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
