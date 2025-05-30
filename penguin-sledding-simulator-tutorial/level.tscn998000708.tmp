@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://rievl6aqwknr"]
+
+[ext_resource type="Script" uid="uid://4qydll2aer3k" path="res://level.gd" id="1_0b4ue"]
+[ext_resource type="PackedScene" uid="uid://hihnycbdqnb5" path="res://player.tscn" id="1_u52ul"]
+[ext_resource type="FontFile" uid="uid://bu84rh60p2qpx" path="res://fonts/nes_cyrillic.ttf" id="5_f2txt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ainy"]
+font = ExtResource("5_f2txt")
+font_color = Color(0, 0, 0, 1)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_0b4ue")
+
+[node name="Player" parent="." instance=ExtResource("1_u52ul")]
+position = Vector2(16, 64)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "0.6"
+label_settings = SubResource("LabelSettings_1ainy")
+
+[node name="Areas" type="Node2D" parent="."]

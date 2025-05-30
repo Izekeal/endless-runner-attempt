@@ -122,6 +122,8 @@ func signal_velocity() ->  void:
 # This checks for a forward collision.
 # TO-DO: Determine a method to allow for the player to *bonk* on ceilings
 # without triggering a level_finished
+# 
+# I think I have that figured out by adjusting the size of the raycasts
 func check_for_collision():
 	if ray_cast_forward.is_colliding():
 		var collision = ray_cast_forward.get_collision_point()

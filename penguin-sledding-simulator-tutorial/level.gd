@@ -1,7 +1,5 @@
 extends Node2D
 
-# velocity.x needs to be cast to this script somehow.
-# name it world_speed or something, and then pass it into _process here
 @onready var timer_label: Label = $CanvasLayer/TimerLabel
 @onready var player: Player = $Player
 @onready var world_speed = 0
@@ -19,7 +17,7 @@ func _ready() -> void:
 	player.update_velocity.connect(update_velocity)
 	randomize()
 	spawn_instance(0, 0)
-	spawn_instance(720,0)
+	spawn_instance(780,0)
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,20 +27,13 @@ func _process(delta: float) -> void:
 		timer_label.text = "%.2f" % world_speed
 		for area in $Areas.get_children():
 			area.position.x -= world_speed * delta
-			if area.position.x < -1024:
-				spawn_instance(area.position.x+2048,0)
+			if area.position.x < -1000:
+				spawn_instance(area.position.x+1600,0)
 				area.queue_free()
 		
 		# If the player has stopped moving, they lose
 		# Create a game over function that has a play again feature
 		# As well as as score breakdown screen
-		
-		# world_speed never drops below a threshold even when the player is
-		# colliding with something. That is because forward collision is not
-		# set up yet.
-		#if time > 2:
-		#	if player.position:
-		#		finish_level()
 		
 	
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -53,6 +44,11 @@ func update_velocity() -> void:
 	
 func spawn_instance(x, y):
 	var inst = segments[randi() % len(segments)].instantiate()
+	# TO-DO: Figure out how to offset new instances properly.
+	# It will likely have something to do with a property of inst. Perhaps
+	# size or width or x dimension? With that calculated to a variable I can
+	# offset the x value in inst.position = Vector2(x,y) to properly accommodate
+	# "areas" of all shapes and sizes
 	inst.position = Vector2(x,y)
 	$Areas.add_child(inst)
 	
