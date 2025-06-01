@@ -67,6 +67,5 @@ target_position = Vector2(-6, 0)
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 process_mode = 3
 position = Vector2(-2, 0)
-emitting = false
 amount = 180
 process_material = SubResource("ParticleProcessMaterial_2hs0m")

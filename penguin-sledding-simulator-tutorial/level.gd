@@ -23,12 +23,15 @@ func _ready() -> void:
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+# Eventually will want to clean these all up into separate function calls
 func _process(delta: float) -> void:
 	if is_timer_running:
 		time += delta
-		timer_label.text = "%.2f" % world_speed
+		timer_label.text = "%.2f" % time
 		for area in $Areas.get_children():
 			area.position.x -= world_speed * delta
+			# could move the snow particles here
+			# player.gpu_particles_2d.x -= world_speed * delta
 			if area.position.x < -1000:
 				spawn_instance(area.position.x+1600,0)
 				area.queue_free()

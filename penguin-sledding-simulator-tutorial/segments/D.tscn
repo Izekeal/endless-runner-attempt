@@ -5,6 +5,6 @@
 [node name="StaticBody2D" type="StaticBody2D"]
 
 [node name="VisibleCollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(0, 88, 80, 88, 120, 72, 160, 48, 232, 32, 280, 64, 312, 136, 392, 128, 432, 104, 536, 64, 592, 56, 656, 24, 720, 8, 728, 192, 0, 192)
+polygon = PackedVector2Array(0, 88, 80, 88, 168, 72, 280, 64, 312, 136, 392, 128, 592, 56, 720, 24, 728, 192, 0, 192)
 script = ExtResource("1_ccgv5")
 metadata/_custom_type_script = "uid://fd2vy2y5l41q"
