@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody2D
 
-@export var acceleration: = 150
+@export var acceleration: = 120  # 120
 @export var max_speed: = 350
 @export var velocity_backup = 0
 @export var friction: = 200
@@ -12,7 +12,7 @@ class_name Player extends CharacterBody2D
 @export var landing_acceleration: = 2250.0
 @export var air_jump_speed_reduction: = 1500
 @export var coyote_time_amount = 0.1
-@export var min_zoom_amount: = 0.8
+@export var min_zoom_amount: = 0.7
 @export var max_zoom_amount: = 1.5
 
 
@@ -40,9 +40,24 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	coyote_time += delta
 	
+	# DEBUG Only, eventually to be removed
+	
+	#if Input.is_action_pressed("ui_right"):
+		#max_speed += 1
+		#
+	#if Input.is_action_pressed("ui_left"):
+		#max_speed -= 1
+		#
+	#if Input.is_key_pressed(KEY_K):
+		#acceleration += 1
+	#
+	#if Input.is_key_pressed(KEY_J):
+		#acceleration -= 1
+	
 	check_for_finish_line()
 	signal_velocity()
 	check_for_collision()
+	check_death_plane()
 	
 	if is_on_floor() or coyote_time <= coyote_time_amount:
 		gpu_particles_2d.emitting = true
@@ -110,6 +125,12 @@ func _physics_process(delta: float) -> void:
 	var zoom_target_amount: float = clamp(max_zoom_amount - (velocity.x / 150), min_zoom_amount, max_zoom_amount)
 	var zoom_target: = Vector2(zoom_target_amount, zoom_target_amount)
 	camera_2d.zoom = camera_2d.zoom.lerp(zoom_target, 0.02)
+
+
+func check_death_plane() -> void:
+	if global_position.y > 1000:
+		level_finished.emit()
+		gpu_particles_2d.set_deferred("emitting", false)
 
 func check_for_finish_line() -> void:
 	if global_position.x > finish_x and finish_x != -1:

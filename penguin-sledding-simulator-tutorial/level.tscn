@@ -1,10 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://rievl6aqwknr"]
+[gd_scene load_steps=6 format=3 uid="uid://rievl6aqwknr"]
 
 [ext_resource type="Script" uid="uid://4qydll2aer3k" path="res://level.gd" id="1_0b4ue"]
 [ext_resource type="PackedScene" uid="uid://hihnycbdqnb5" path="res://player.tscn" id="1_u52ul"]
 [ext_resource type="FontFile" uid="uid://bu84rh60p2qpx" path="res://fonts/nes_cyrillic.ttf" id="5_f2txt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1ainy"]
+font = ExtResource("5_f2txt")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_oi3di"]
 font = ExtResource("5_f2txt")
 font_color = Color(0, 0, 0, 1)
 
@@ -26,7 +30,14 @@ offset_left = -80.0
 offset_top = -23.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "0.6"
 label_settings = SubResource("LabelSettings_1ainy")
+
+[node name="MaxSpeedLabel" type="Label" parent="CanvasLayer"]
+offset_left = 176.0
+offset_top = 160.0
+offset_right = 227.0
+offset_bottom = 183.0
+label_settings = SubResource("LabelSettings_oi3di")
+horizontal_alignment = 2
 
 [node name="Areas" type="Node2D" parent="."]
