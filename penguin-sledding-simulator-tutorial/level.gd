@@ -18,7 +18,12 @@ var segments = [
 	preload("res://segments/E.tscn"),
 	preload("res://segments/F.tscn"),
 	preload("res://segments/G.tscn"),
-	preload("res://segments/H.tscn")
+	preload("res://segments/H.tscn"),
+	preload("res://segments/I.tscn"),
+	preload("res://segments/J.tscn"),
+	preload("res://segments/K.tscn"),
+	preload("res://segments/L.tscn"),
+	preload("res://segments/M.tscn")
 ]
 
 # Time can be used to track when to increase max speed and other "hidden"
@@ -41,7 +46,7 @@ func _process(delta: float) -> void:
 		time += delta
 		score += .01
 		timer_label.text = "%.2f" % score
-		#max_speed_label.text = "%.2f" % world_speed
+		max_speed_label.text = "%.2f" % world_speed
 		
 		# The max game speed is incremented using a timer
 		if time > 8:

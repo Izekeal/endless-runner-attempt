@@ -1,0 +1,76 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdlch3eeergrd"]
+
+[ext_resource type="Script" uid="uid://fd2vy2y5l41q" path="res://visible_collision_polygon_2d.gd" id="1_gn37d"]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="VisibleCollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(16, 96, 32, 96, 40, 112, 0, 128, -16, 104)
+script = ExtResource("1_gn37d")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+position = Vector2(128, -72)
+polygon = PackedVector2Array(16, 96, 32, 96, 40, 112, 0, 128, -16, 104)
+script = ExtResource("1_gn37d")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D3" type="CollisionPolygon2D" parent="."]
+position = Vector2(120, 72)
+polygon = PackedVector2Array(16, 96, 32, 96, 40, 112, 0, 128, -16, 104)
+script = ExtResource("1_gn37d")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D4" type="CollisionPolygon2D" parent="."]
+position = Vector2(264, 32)
+polygon = PackedVector2Array(16, 96, 32, 96, 40, 112, 0, 128, -16, 104)
+script = ExtResource("1_gn37d")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D5" type="CollisionPolygon2D" parent="."]
+position = Vector2(224, -32)
+polygon = PackedVector2Array(16, 96, 32, 96, 40, 112, 0, 128, -16, 104)
+script = ExtResource("1_gn37d")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D6" type="CollisionPolygon2D" parent="."]
+position = Vector2(480, -16)
+polygon = PackedVector2Array(16, 96, 32, 96, 40, 112, 0, 128, -16, 104)
+script = ExtResource("1_gn37d")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D7" type="CollisionPolygon2D" parent="."]
+position = Vector2(384, 72)
+polygon = PackedVector2Array(16, 96, 32, 96, 40, 112, 0, 128, -16, 104)
+script = ExtResource("1_gn37d")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D8" type="CollisionPolygon2D" parent="."]
+position = Vector2(400, -56)
+polygon = PackedVector2Array(16, 96, 32, 96, 40, 112, 0, 128, -16, 104)
+script = ExtResource("1_gn37d")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D9" type="CollisionPolygon2D" parent="."]
+position = Vector2(616, -48)
+polygon = PackedVector2Array(16, 96, 32, 96, 40, 112, 0, 128, -16, 104)
+script = ExtResource("1_gn37d")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D10" type="CollisionPolygon2D" parent="."]
+position = Vector2(520, 104)
+polygon = PackedVector2Array(16, 96, 32, 96, 40, 112, 0, 128, -16, 104)
+script = ExtResource("1_gn37d")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D11" type="CollisionPolygon2D" parent="."]
+position = Vector2(632, 32)
+polygon = PackedVector2Array(16, 96, 32, 96, 40, 112, 0, 128, -16, 104)
+script = ExtResource("1_gn37d")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D12" type="CollisionPolygon2D" parent="."]
+position = Vector2(712, -16)
+polygon = PackedVector2Array(16, 96, 32, 96, 40, 112, 0, 128, -16, 104)
+script = ExtResource("1_gn37d")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"

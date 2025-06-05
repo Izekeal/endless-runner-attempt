@@ -29,3 +29,8 @@ scale = Vector2(0.555147, 0.256776)
 polygon = PackedVector2Array(192, 128, 475.55, 155.778, 328, 184, 259.391, 249.244, 192, 184)
 script = ExtResource("1_ikpr0")
 metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D5" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-16, 112, 48, 96, 48, 120, 72, 128, 72, 144, 8, 168)
+script = ExtResource("1_ikpr0")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"

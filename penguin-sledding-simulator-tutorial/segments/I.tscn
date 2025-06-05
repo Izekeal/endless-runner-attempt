@@ -1,0 +1,84 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn1hulg5hd2x"]
+
+[ext_resource type="Script" uid="uid://fd2vy2y5l41q" path="res://visible_collision_polygon_2d.gd" id="1_eh8bg"]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="VisibleCollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 72, 64, 80, 48, 112)
+script = ExtResource("1_eh8bg")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(136, 56, 184, 88, 144, 112, 120, 48)
+script = ExtResource("1_eh8bg")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D3" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(328, 40, 288, 104, 216, 56)
+script = ExtResource("1_eh8bg")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D4" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(360, 88, 360, 112, 336, 112, 336, 88, 343.529, 88)
+script = ExtResource("1_eh8bg")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D5" type="CollisionPolygon2D" parent="."]
+position = Vector2(48, 0)
+polygon = PackedVector2Array(360, 88, 360, 112, 336, 112, 336, 88, 343.529, 88)
+script = ExtResource("1_eh8bg")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D6" type="CollisionPolygon2D" parent="."]
+position = Vector2(-124.35, -100.983)
+scale = Vector2(1.64583, 1.64583)
+polygon = PackedVector2Array(360, 88, 360, 112, 336, 112, 336, 88, 343.529, 88)
+script = ExtResource("1_eh8bg")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D7" type="CollisionPolygon2D" parent="."]
+position = Vector2(-153.65, 8.00001)
+scale = Vector2(1.85417, 1)
+polygon = PackedVector2Array(360, 88, 360, 112, 336, 112, 336, 88, 343.529, 88)
+script = ExtResource("1_eh8bg")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D8" type="CollisionPolygon2D" parent="."]
+position = Vector2(144, -149.85)
+scale = Vector2(1, 2.0625)
+polygon = PackedVector2Array(360, 88, 360, 112, 336, 112, 336, 88, 343.529, 88)
+script = ExtResource("1_eh8bg")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D9" type="CollisionPolygon2D" parent="."]
+position = Vector2(208, -48)
+polygon = PackedVector2Array(360, 88, 360, 112, 336, 112, 336, 88, 343.529, 88)
+script = ExtResource("1_eh8bg")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D10" type="CollisionPolygon2D" parent="."]
+position = Vector2(56.1499, -44.1833)
+scale = Vector2(1.4375, 1.64583)
+polygon = PackedVector2Array(360, 88, 360, 112, 336, 112, 336, 88, 343.529, 88)
+script = ExtResource("1_eh8bg")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D11" type="CollisionPolygon2D" parent="."]
+position = Vector2(-32.85, -85.0166)
+scale = Vector2(1.85417, 1.85417)
+polygon = PackedVector2Array(360, 88, 360, 112, 336, 112, 336, 88, 343.529, 88)
+script = ExtResource("1_eh8bg")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D12" type="CollisionPolygon2D" parent="."]
+position = Vector2(264, -72)
+polygon = PackedVector2Array(360, 88, 360, 112, 336, 112, 336, 88, 343.529, 88)
+script = ExtResource("1_eh8bg")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="VisibleCollisionPolygon2D13" type="CollisionPolygon2D" parent="."]
+position = Vector2(328, 24)
+polygon = PackedVector2Array(360, 88, 360, 112, 336, 112, 336, 88, 343.529, 88)
+script = ExtResource("1_eh8bg")
+metadata/_custom_type_script = "uid://fd2vy2y5l41q"
