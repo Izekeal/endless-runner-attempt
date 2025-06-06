@@ -10,6 +10,6 @@ script = ExtResource("1_mg6ke")
 metadata/_custom_type_script = "uid://fd2vy2y5l41q"
 
 [node name="VisibleCollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(496, 112, 568, 72, 568, 128)
+polygon = PackedVector2Array(496, 112, 568, 88, 568, 128)
 script = ExtResource("1_mg6ke")
 metadata/_custom_type_script = "uid://fd2vy2y5l41q"

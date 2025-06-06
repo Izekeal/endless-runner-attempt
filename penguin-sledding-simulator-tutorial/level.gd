@@ -11,19 +11,19 @@ extends Node2D
 # To Do: convert this to a instanced loop with the iterator being
 # capital letters
 var segments = [
-	preload("res://segments/A.tscn"),
-	preload("res://segments/B.tscn"),
-	preload("res://segments/C.tscn"),
-	preload("res://segments/D.tscn"),
-	preload("res://segments/E.tscn"),
-	preload("res://segments/F.tscn"),
-	preload("res://segments/G.tscn"),
-	preload("res://segments/H.tscn"),
-	preload("res://segments/I.tscn"),
-	preload("res://segments/J.tscn"),
-	preload("res://segments/K.tscn"),
-	preload("res://segments/L.tscn"),
-	preload("res://segments/M.tscn")
+	preload("res://segments/A.tscn")#,
+	#preload("res://segments/B.tscn"),
+	#preload("res://segments/C.tscn"),
+	#preload("res://segments/D.tscn"),
+	#preload("res://segments/E.tscn"),
+	#preload("res://segments/F.tscn"),
+	#preload("res://segments/G.tscn"),
+	#preload("res://segments/H.tscn"),
+	#preload("res://segments/I.tscn"),
+	#preload("res://segments/J.tscn"),
+	#preload("res://segments/K.tscn"),
+	#preload("res://segments/L.tscn"),
+	#preload("res://segments/M.tscn")
 ]
 
 # Time can be used to track when to increase max speed and other "hidden"
@@ -34,7 +34,12 @@ var is_timer_running = true
 func _ready() -> void:
 	player.level_finished.connect(finish_level)
 	player.update_velocity.connect(update_velocity)
+	Events.heart_collected.connect(score_points)
 	randomize()
+	
+	# Spawn a starting instance, maybe it's always the same segment
+	# Don't spawn these at random, ruins the game-feel
+	
 	spawn_instance(0, 0)
 	spawn_instance(720,0)
 	
@@ -46,7 +51,7 @@ func _process(delta: float) -> void:
 		time += delta
 		score += .01
 		timer_label.text = "%.2f" % score
-		max_speed_label.text = "%.2f" % world_speed
+		# max_speed_label.text = "%.2f" % world_speed
 		
 		# The max game speed is incremented using a timer
 		if time > 8:
@@ -104,3 +109,6 @@ func spawn_instance(x, y):
 func finish_level() -> void:
 	player.set_deferred("process_mode", PROCESS_MODE_DISABLED)
 	is_timer_running = false
+	
+func score_points() -> void:
+	score += 10

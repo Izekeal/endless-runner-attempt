@@ -54,7 +54,7 @@ func _physics_process(delta: float) -> void:
 	#if Input.is_key_pressed(KEY_J):
 		#acceleration -= 1
 	
-	check_for_finish_line()
+	# check_for_finish_line()
 	signal_velocity()
 	check_for_collision()
 	check_death_plane()
@@ -132,10 +132,10 @@ func check_death_plane() -> void:
 		level_finished.emit()
 		gpu_particles_2d.set_deferred("emitting", false)
 
-func check_for_finish_line() -> void:
-	if global_position.x > finish_x and finish_x != -1:
-		level_finished.emit()
-		gpu_particles_2d.set_deferred("emitting", false)
+#func check_for_finish_line() -> void:
+	#if global_position.x > finish_x and finish_x != -1:
+		#level_finished.emit()
+		#gpu_particles_2d.set_deferred("emitting", false)
 
 func signal_velocity() ->  void:
 	update_velocity.emit()
