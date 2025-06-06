@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://hihnycbdqnb5"]
+[gd_scene load_steps=11 format=3 uid="uid://hihnycbdqnb5"]
 
 [ext_resource type="Texture2D" uid="uid://c7wdbyo5x3lyv" path="res://textures/penquin.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://dgb1sqbqbcm64" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="AudioStream" uid="uid://ddmbcdb14p6gi" path="res://audio/jump.wav" id="4_hqtel"]
+[ext_resource type="AudioStream" uid="uid://1amj7r2qagor" path="res://audio/slide.ogg" id="5_2hs0m"]
+[ext_resource type="AudioStream" uid="uid://cy8vrycklkdup" path="res://audio/double_jump.wav" id="5_sweqy"]
 
 [sub_resource type="Gradient" id="Gradient_onrkg"]
 offsets = PackedFloat32Array(0.450704, 1)
@@ -70,3 +73,15 @@ position = Vector2(-2, 0)
 emitting = false
 amount = 180
 process_material = SubResource("ParticleProcessMaterial_2hs0m")
+
+[node name="JumpingAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_hqtel")
+bus = &"Jumping"
+
+[node name="DoubleJumpAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_sweqy")
+bus = &"Jumping"
+
+[node name="SlidingAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_2hs0m")
+bus = &"Sliding"

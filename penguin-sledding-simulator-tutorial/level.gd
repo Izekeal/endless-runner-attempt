@@ -8,22 +8,22 @@ extends Node2D
 @onready var display_score = 0
 
 # Load all the level segments
-# To Do: convert this to a instanced loop with the iterator being
+# TO-DO: convert this to a instanced loop with the iterator being
 # capital letters
 var segments = [
-	preload("res://segments/A.tscn")#,
-	#preload("res://segments/B.tscn"),
-	#preload("res://segments/C.tscn"),
-	#preload("res://segments/D.tscn"),
-	#preload("res://segments/E.tscn"),
-	#preload("res://segments/F.tscn"),
-	#preload("res://segments/G.tscn"),
-	#preload("res://segments/H.tscn"),
-	#preload("res://segments/I.tscn"),
-	#preload("res://segments/J.tscn"),
-	#preload("res://segments/K.tscn"),
-	#preload("res://segments/L.tscn"),
-	#preload("res://segments/M.tscn")
+	preload("res://segments/A.tscn"),
+	preload("res://segments/B.tscn"),
+	preload("res://segments/C.tscn"),
+	preload("res://segments/D.tscn"),
+	preload("res://segments/E.tscn"),
+	preload("res://segments/F.tscn"),
+	preload("res://segments/G.tscn"),
+	preload("res://segments/H.tscn"),
+	preload("res://segments/I.tscn"),
+	preload("res://segments/J.tscn"),
+	preload("res://segments/K.tscn"),
+	preload("res://segments/L.tscn"),
+	preload("res://segments/M.tscn")
 ]
 
 # Time can be used to track when to increase max speed and other "hidden"
@@ -37,10 +37,9 @@ func _ready() -> void:
 	Events.heart_collected.connect(score_points)
 	randomize()
 	
-	# Spawn a starting instance, maybe it's always the same segment
-	# Don't spawn these at random, ruins the game-feel
-	
-	spawn_instance(0, 0)
+	# Spawn a starting segment, always the same
+	# Spawn one random segment off the right side of the screen
+	spawn_starting_instance(0,0)
 	spawn_instance(720,0)
 	
 	
@@ -49,14 +48,16 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if is_timer_running:
 		time += delta
-		score += .01
-		timer_label.text = "%.2f" % score
+		timer_label.text = str("Score: ") + str(score)
 		# max_speed_label.text = "%.2f" % world_speed
 		
 		# The max game speed is incremented using a timer
 		if time > 8:
 			player.max_speed += 15
 			time = 0
+			# Increase score here for every "tick" of the timer
+			# Helps prevent ties in the high score board
+			score += 5
 			
 		for area in $Areas.get_children():
 			area.position.x -= world_speed * delta
@@ -94,7 +95,13 @@ func update_velocity() -> void:
 	
 	# TO-DO: Could clean up that bug with some more code
 	# TO-DO: Find the upper limit of speed, when the game completely breaks down
-	# Tested: 700, 
+	# Tested: 700, anything beyond that is "janky"
+	
+	
+func spawn_starting_instance(x, y):
+	var starting_segment = segments[2].instantiate()
+	starting_segment.position = Vector2(x,y)
+	$Areas.add_child(starting_segment)
 	
 func spawn_instance(x, y):
 	var inst = segments[randi() % len(segments)].instantiate()
@@ -103,12 +110,17 @@ func spawn_instance(x, y):
 	# size or width or x dimension? With that calculated to a variable I can
 	# offset the x value in inst.position = Vector2(x,y) to properly accommodate
 	# "areas" of all shapes and sizes
-	inst.position = Vector2(x,y)
+	
+	# Roll a random number between -20 and +20
+	# Use this as an offset for y
+	var y_offset = randi_range(-40,40)
+	inst.position = Vector2(x,y+y_offset)
 	$Areas.add_child(inst)
 	
 func finish_level() -> void:
 	player.set_deferred("process_mode", PROCESS_MODE_DISABLED)
 	is_timer_running = false
+	
 	
 func score_points() -> void:
 	score += 10

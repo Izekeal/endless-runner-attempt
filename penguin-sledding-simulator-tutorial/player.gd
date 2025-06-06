@@ -29,6 +29,10 @@ var finish_x: = -1.0
 @onready var collision_polygon_2d: CollisionPolygon2D = $CollisionPolygon2D
 @onready var ray_cast_forward: RayCast2D = $RayCastForward
 @onready var ray_cast_backward: RayCast2D = $RayCastBackward
+@onready var jumping_audio: AudioStreamPlayer2D = $JumpingAudio
+@onready var double_jump_audio: AudioStreamPlayer2D = $DoubleJumpAudio
+@onready var sliding_audio: AudioStreamPlayer = $SlidingAudio
+
 
 signal level_finished()
 signal update_velocity()
@@ -62,6 +66,11 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor() or coyote_time <= coyote_time_amount:
 		gpu_particles_2d.emitting = true
 		air_jump = true
+		# Sliding on the ice should be treated as "music"
+		# TO-DO: Figure out how to loop the audio instead of playing the
+		# beginning over and over
+		sliding_audio.playing = true
+		
 		target_tilt = 0.0
 		# accelerate towards max speed, else: use friction to slow down to max speed
 		if velocity.x <= max_speed:
@@ -71,6 +80,8 @@ func _physics_process(delta: float) -> void:
 			
 		if Input.is_action_just_pressed("ui_up"):
 			velocity.y = -jump_force
+			jumping_audio.play()
+			sliding_audio.playing = false
 	else:
 		gpu_particles_2d.emitting = false
 		target_tilt = clamp(velocity.y / 4, -30, 30)
@@ -81,6 +92,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("ui_up") and air_jump:
 			velocity.y = -jump_force
 			velocity.x -= air_jump_speed_reduction * delta
+			double_jump_audio.play()
 			air_jump = false
 			var tween = create_tween()
 			tween.tween_property(sprite_2d, "rotation_degrees", 0, 0.4).from(360 + sprite_2d.rotation_degrees)

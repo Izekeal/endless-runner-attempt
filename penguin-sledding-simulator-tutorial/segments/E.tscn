@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bw18tqshmyur8"]
+[gd_scene load_steps=3 format=3 uid="uid://bw18tqshmyur8"]
 
 [ext_resource type="Script" uid="uid://fd2vy2y5l41q" path="res://visible_collision_polygon_2d.gd" id="1_w1xii"]
+[ext_resource type="PackedScene" uid="uid://bktgjhedq4034" path="res://heart.tscn" id="2_ssb7y"]
 
 [node name="StaticBody2D2" type="StaticBody2D"]
 
@@ -11,11 +12,22 @@ script = ExtResource("1_w1xii")
 metadata/_custom_type_script = "uid://fd2vy2y5l41q"
 
 [node name="VisibleCollisionPolygon2D3" type="CollisionPolygon2D" parent="."]
+position = Vector2(5.60001, 8)
 polygon = PackedVector2Array(472, 160, 544, 160, 544, 176, 472, 176)
 script = ExtResource("1_w1xii")
 metadata/_custom_type_script = "uid://fd2vy2y5l41q"
 
 [node name="VisibleCollisionPolygon2D4" type="CollisionPolygon2D" parent="."]
+position = Vector2(32, 24)
 polygon = PackedVector2Array(560, 96, 640, 96, 640, 112, 560, 112)
 script = ExtResource("1_w1xii")
 metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="Area2D" parent="." instance=ExtResource("2_ssb7y")]
+position = Vector2(541.6, 160)
+
+[node name="Area2D2" parent="." instance=ExtResource("2_ssb7y")]
+position = Vector2(664, 112)
+
+[node name="Area2D3" parent="." instance=ExtResource("2_ssb7y")]
+position = Vector2(224, 136)

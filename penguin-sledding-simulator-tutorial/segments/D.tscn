@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://w74kbsm6no0s"]
+[gd_scene load_steps=3 format=3 uid="uid://w74kbsm6no0s"]
 
 [ext_resource type="Script" uid="uid://fd2vy2y5l41q" path="res://visible_collision_polygon_2d.gd" id="1_ccgv5"]
+[ext_resource type="PackedScene" uid="uid://bktgjhedq4034" path="res://heart.tscn" id="2_k0irq"]
 
 [node name="StaticBody2D" type="StaticBody2D"]
 
@@ -9,3 +10,12 @@ position = Vector2(0, 40)
 polygon = PackedVector2Array(0, 88, 80, 88, 168, 72, 280, 64, 312, 136, 392, 128, 592, 56, 704, 24, 704, 192, 0, 192)
 script = ExtResource("1_ccgv5")
 metadata/_custom_type_script = "uid://fd2vy2y5l41q"
+
+[node name="Area2D" parent="." instance=ExtResource("2_k0irq")]
+position = Vector2(88, 56)
+
+[node name="Area2D2" parent="." instance=ExtResource("2_k0irq")]
+position = Vector2(328, 168)
+
+[node name="Area2D4" parent="." instance=ExtResource("2_k0irq")]
+position = Vector2(504, 48)
