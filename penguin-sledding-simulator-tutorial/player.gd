@@ -20,6 +20,7 @@ var target_tilt: = 0.0
 var air_jump: = true
 var coyote_time: = 0.0
 var finish_x: = -1.0
+var is_sliding: = false
 
 @onready var anchor: Node2D = $Anchor
 @onready var sprite_2d: Sprite2D = $Anchor/Sprite2D
@@ -63,13 +64,20 @@ func _physics_process(delta: float) -> void:
 	check_for_collision()
 	check_death_plane()
 	
+	if is_on_floor():
+		if not is_sliding:
+			sliding_audio.play()
+			is_sliding = true
+	
 	if is_on_floor() or coyote_time <= coyote_time_amount:
 		gpu_particles_2d.emitting = true
 		air_jump = true
 		# Sliding on the ice should be treated as "music"
 		# TO-DO: Figure out how to loop the audio instead of playing the
 		# beginning over and over
-		sliding_audio.playing = true
+		#if not is_sliding:
+			#sliding_audio.playing = true
+			#is_sliding = true
 		
 		target_tilt = 0.0
 		# accelerate towards max speed, else: use friction to slow down to max speed
@@ -80,8 +88,9 @@ func _physics_process(delta: float) -> void:
 			
 		if Input.is_action_just_pressed("ui_up"):
 			velocity.y = -jump_force
+			is_sliding = false
+			sliding_audio.stop()
 			jumping_audio.play()
-			sliding_audio.playing = false
 	else:
 		gpu_particles_2d.emitting = false
 		target_tilt = clamp(velocity.y / 4, -30, 30)
@@ -90,6 +99,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, air_friction * delta)
 		
 		if Input.is_action_just_pressed("ui_up") and air_jump:
+			sliding_audio.stop()
+			is_sliding = false
 			velocity.y = -jump_force
 			velocity.x -= air_jump_speed_reduction * delta
 			double_jump_audio.play()

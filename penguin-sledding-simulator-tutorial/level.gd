@@ -6,6 +6,8 @@ extends Node2D
 @onready var world_speed = 0
 @onready var score = 0
 @onready var display_score = 0
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var level_completed: ColorRect = $CanvasLayer/LevelCompleted
 
 # Load all the level segments
 # TO-DO: convert this to a instanced loop with the iterator being
@@ -33,6 +35,7 @@ var is_timer_running = true
 
 func _ready() -> void:
 	player.level_finished.connect(finish_level)
+	level_completed.retry_pressed.connect(retry_game)
 	player.update_velocity.connect(update_velocity)
 	Events.heart_collected.connect(score_points)
 	randomize()
@@ -57,7 +60,7 @@ func _process(delta: float) -> void:
 			time = 0
 			# Increase score here for every "tick" of the timer
 			# Helps prevent ties in the high score board
-			score += 5
+			score += 1
 			
 		for area in $Areas.get_children():
 			area.position.x -= world_speed * delta
@@ -72,8 +75,8 @@ func _process(delta: float) -> void:
 		# As well as as score breakdown screen
 		
 	
-	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().reload_current_scene()
+	#if Input.is_action_just_pressed("ui_cancel"):
+		#get_tree().reload_current_scene()
 
 func update_velocity() -> void:
 	world_speed = player.velocity.x
@@ -118,9 +121,15 @@ func spawn_instance(x, y):
 	$Areas.add_child(inst)
 	
 func finish_level() -> void:
+	level_completed.show()
+	level_completed.retry_button.grab_focus()
 	player.set_deferred("process_mode", PROCESS_MODE_DISABLED)
 	is_timer_running = false
 	
-	
 func score_points() -> void:
 	score += 10
+	audio_stream_player.play()
+	
+func retry_game() -> void:
+	level_completed.hide()
+	get_tree().reload_current_scene()
